@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS Reservation;
 DROP TABLE IF EXISTS Media;
 
 CREATE TABLE Customer (
-    CustomerID INT PRIMARY KEY,
+    CustomerID INT AUTO_INCREMENT PRIMARY KEY,
     FirstName VARCHAR(64),
     Surname VARCHAR(64),
     PhoneNo VARCHAR(20),
@@ -20,7 +20,7 @@ CREATE TABLE Customer (
 );
 
 CREATE TABLE Media (
-    MediaID INT PRIMARY KEY,
+    MediaID INT AUTO_INCREMENT PRIMARY KEY,
     ISBN VARCHAR(20) UNIQUE,
     Quantity INT,
     Title VARCHAR(64),
@@ -29,7 +29,7 @@ CREATE TABLE Media (
 );
 
 CREATE TABLE Reservation (
-    ReserveID INT PRIMARY KEY,
+    ReserveID INT AUTO_INCREMENT PRIMARY KEY,
     DueDate DATE,
     Time TIME,
     Date DATE,
