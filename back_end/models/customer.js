@@ -18,4 +18,4 @@ module.exports = class customer {
 }
 
 // use this line to import class
-// const Item = require('./models/customer');
+// const Customer = require('./models/customer');
