@@ -1,7 +1,7 @@
 /**
  * Create customer object from database
  */
-module.exports = class Customer {
+module.exports = class customer {
 
     constructor (CustomerID, FirstName, Surname, PhoneNo, Email, StreetNumber, Street, ZIPcode, DOB) {
         this.CustomerID = CustomerID;
@@ -18,4 +18,4 @@ module.exports = class Customer {
 }
 
 // use this line to import class
-// const Item = require('./models/sale');
+// const Item = require('./models/customer');
