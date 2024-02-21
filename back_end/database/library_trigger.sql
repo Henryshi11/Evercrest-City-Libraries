@@ -1,0 +1,29 @@
+CREATE OR REPLACE TRIGGER customer_bir
+BEFORE INSERT ON Customer
+FOR EACH ROW
+BEGIN
+  SELECT customer_seq.NEXTVAL
+  INTO :new.CustomerID
+  FROM dual;
+END;
+/
+
+CREATE OR REPLACE TRIGGER reservation_bir
+BEFORE INSERT ON Reservation
+FOR EACH ROW
+BEGIN
+  SELECT reservation_seq.NEXTVAL
+  INTO :new.ReserveID
+  FROM dual;
+END;
+/
+
+CREATE OR REPLACE TRIGGER media_bir
+BEFORE INSERT ON Media
+FOR EACH ROW
+BEGIN
+  SELECT media_seq.NEXTVAL
+  INTO :new.MediaID
+  FROM dual;
+END;
+/
