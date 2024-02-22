@@ -1,80 +1,67 @@
-/**
- * Create media object from database
- */
-module.exports = class media {
+// media.js
 
-    constructor (mediaID, ISBN, Quantity, Title, Publisher, PublicationDate) {
+class Media {
+    constructor(mediaID, ISBN, Quantity, Title, Publisher, PublicationDate) {
         this.mediaID = mediaID;
         this.ISBN = ISBN;
         this.Quantity = Quantity;
         this.Title = Title;
-        this.Publisher = Publisher
+        this.Publisher = Publisher;
         this.PublicationDate = PublicationDate;
     }
 }
 
-module.exports = class author {
-
-    constructor (authorID, authorName) {
+class Author {
+    constructor(authorID, authorName) {
         this.authorID = authorID;
         this.authorName = authorName;
     }
 }
 
-module.exports = class media_author {
-
-    constructor (mediaID, authorID) {
+class MediaAuthor {
+    constructor(mediaID, authorID) {
         this.mediaID = mediaID;
         this.authorID = authorID;
     }
 }
 
-module.exports = class speaker {
-
-    constructor (speakerID, speakerName) {
+class Speaker {
+    constructor(speakerID, speakerName) {
         this.speakerID = speakerID;
         this.speakerName = speakerName;
     }
 }
 
-module.exports = class media_speaker {
-
-    constructor (mediaID, speakerID) {
+class MediaSpeaker {
+    constructor(mediaID, speakerID) {
         this.mediaID = mediaID;
         this.speakerID = speakerID;
     }
 }
 
-module.exports = class actor {
-
-    constructor (actorID, actorName) {
+class Actor {
+    constructor(actorID, actorName) {
         this.actorID = actorID;
         this.actorName = actorName;
     }
 }
 
-module.exports = class media_actor {
-
-    constructor (mediaID, actorID) {
+class MediaActor {
+    constructor(mediaID, actorID) {
         this.mediaID = mediaID;
         this.actorID = actorID;
     }
 }
 
-module.exports = class subtitleoption {
 
-    constructor (subtitleoptionID) {
-        this.subtitleoptionID = subtitleoptionID;
-    }
-}
+// Export all classes as an object
+module.exports = {
+    Media,
+    Author,
+    MediaAuthor,
+    Speaker,
+    MediaSpeaker,
+    Actor,
+    MediaActor,
+};
 
-module.exports = class media_subtitleoption {
-
-    constructor (mediaID, subtitleoptionID) {
-        this.mediaID = mediaID;
-        this.subtitleoptionID = subtitleoptionID;
-    }
-}
-
-// use this line to import class
-// const media = require('./models/media');

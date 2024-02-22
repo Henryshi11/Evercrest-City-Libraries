@@ -1,19 +1,16 @@
-/**
- * Create reservation object from database
- */
-module.exports = class reservation {
+// reservation.js
 
-    constructor (reserveID, DueDate, Time, Date, IsReturned, Quantity, CustomerID, MediaID) {
+class Reservation {
+    constructor(reserveID, DueDate, Time, Date, IsReturned, Quantity, CustomerID, MediaID) {
         this.reserveID = reserveID;
-        this.DueDate = DueDate;
-        this.Time = Time;
-        this.Date = Date;
-        this.IsReturned = IsReturned;
+        this.DueDate = new Date(DueDate); 
+        this.Time = Time; 
+        this.Date = new Date(Date); 
+        this.IsReturned = IsReturned; 
         this.Quantity = Quantity;
         this.CustomerID = CustomerID;
         this.MediaID = MediaID;
     }
 }
 
-// use this line to import class
-// const reservation = require('./models/reservation');
+module.exports = Reservation;
