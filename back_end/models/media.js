@@ -15,8 +15,9 @@ module.exports = class media {
 
 module.exports = class author {
 
-    constructor (authorID) {
+    constructor (authorID, authorName) {
         this.authorID = authorID;
+        this.authorName = authorName;
     }
 }
 
@@ -30,8 +31,9 @@ module.exports = class media_author {
 
 module.exports = class speaker {
 
-    constructor (speakerID) {
+    constructor (speakerID, speakerName) {
         this.speakerID = speakerID;
+        this.speakerName = speakerName;
     }
 }
 
@@ -45,8 +47,9 @@ module.exports = class media_speaker {
 
 module.exports = class actor {
 
-    constructor (actorID) {
+    constructor (actorID, actorName) {
         this.actorID = actorID;
+        this.actorName = actorName;
     }
 }
 

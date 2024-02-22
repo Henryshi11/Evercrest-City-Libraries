@@ -3,13 +3,15 @@
  */
 module.exports = class reservation {
 
-    constructor (reserveID, DueDate, Time, Date, IsReturned, Quantity) {
+    constructor (reserveID, DueDate, Time, Date, IsReturned, Quantity, CustomerID, MediaID) {
         this.reserveID = reserveID;
         this.DueDate = DueDate;
         this.Time = Time;
         this.Date = Date;
         this.IsReturned = IsReturned;
         this.Quantity = Quantity;
+        this.CustomerID = CustomerID;
+        this.MediaID = MediaID;
     }
 }
 
