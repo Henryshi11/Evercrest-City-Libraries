@@ -77,7 +77,7 @@ CREATE TABLE Media_Actor (
 
 
 CREATE TABLE Reservation (
-    ReserveID INT AUTO_INCREMENT PRIMARY KEY,
+    ReservationID INT AUTO_INCREMENT PRIMARY KEY,
     DueDate DATE,
     Time TIME,
     Date DATE,
