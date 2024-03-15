@@ -5,7 +5,7 @@ const reservation_controller = {
     insertReservation: async function(reservationData) {
         try {
             const [rows] = await pool.query(
-                'INSERT INTO Reservation (DueDate, Time, Date, IsReturned, Quantity, CustomerID, MediaID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                'INSERT INTO Reservation (DueDate, Time, Date, IsReturned, Quantity, CustomerID, MediaID) VALUES (?, ?, ?, ?, ?, ?, ?)',
                 [reservationData.DueDate, reservationData.Time, reservationData.Date, 0, reservationData.Quantity, reservationData.CustomerID, reservationData.MediaID]
             );
 

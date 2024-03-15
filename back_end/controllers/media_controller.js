@@ -77,15 +77,29 @@ const media_controller = {
     // Delete a media
     deleteMedia: async function(mediaID) {
         try {
-            const [rows] = await pool.query(
-                'DELETE FROM Media WHERE MediaID = ?',
-                [mediaID]
-            );
-            return `Media ${mediaID} deleted successfully. Affected rows: ${rows.affectedRows}`;
+            // Start transaction to ensure all or nothing is committed
+            await pool.query('START TRANSACTION');
+    
+            // Delete related entries from Media_Author, Media_Speaker, and Media_Actor
+            await pool.query('DELETE FROM Media_Author WHERE MediaID = ?', [mediaID]);
+            await pool.query('DELETE FROM Media_Speaker WHERE MediaID = ?', [mediaID]);
+            await pool.query('DELETE FROM Media_Actor WHERE MediaID = ?', [mediaID]);
+    
+    
+            const [rowsMedia] = await pool.query('DELETE FROM Media WHERE MediaID = ?', [mediaID]);
+    
+            // Commit transaction
+            await pool.query('COMMIT');
+    
+            return `Media ${mediaID} deleted successfully. Affected rows: ${rowsMedia.affectedRows}`;
         } catch (error) {
+            // Rollback transaction in case of any error
+            await pool.query('ROLLBACK');
             throw error;
         }
     }
+    
+    
 };
 
 module.exports = media_controller;
