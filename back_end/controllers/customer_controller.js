@@ -1,23 +1,35 @@
-const pool = require('../connection/datapool'); 
+const pool = require('../connection/datapool');
 
 const customer_controller = {
     // Insert a new customer
-    insertCustomer: async function(customerData) {
+    insertCustomer: async function (customerData) {
         try {
             const [rows] = await pool.query(
                 'INSERT INTO Customer (FirstName, Surname, PhoneNo, Email, StreetNumber, Street, ZIPcode, DOB) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
                 [customerData.FirstName, customerData.Surname, customerData.PhoneNo, customerData.Email, customerData.StreetNumber, customerData.Street, customerData.ZIPcode, customerData.DOB]
             );
 
-            const newCustomer = new Customer(rows.insertId, ...Object.values(customerData));
-            return newCustomer;
+ //           const newCustomer = new Customer(rows.insertId, ...Object.values(customerData));
+//            return newCustomer;
+        } catch (error) {
+            throw error;
+        }
+    },
+
+    // Search an existing customer
+    searchCustomerByName: async function (name) {
+        try {
+            const [rows] = await pool.query(
+                'SELECT * FROM Customer WHERE FirstName LIKE ? OR Surname LIKE ?', [`%${name}%`, `%${name}%`]
+            );
+            return rows;
         } catch (error) {
             throw error;
         }
     },
 
     // Update an existing customer
-    updateCustomer: async function(customerID, customerData) {
+    updateCustomer: async function (customerID, customerData) {
         try {
             const [rows] = await pool.query(
                 'UPDATE Customer SET FirstName=?, Surname=?, PhoneNo=?, Email=?, StreetNumber=?, Street=?, ZIPcode=?, DOB=? WHERE CustomerID=?',
@@ -30,7 +42,7 @@ const customer_controller = {
     },
 
     // Delete a customer
-    deleteCustomer: async function(customerID) {
+    deleteCustomer: async function (customerID) {
         try {
             const [rows] = await pool.query(
                 'DELETE FROM Customer WHERE CustomerID = ?',
