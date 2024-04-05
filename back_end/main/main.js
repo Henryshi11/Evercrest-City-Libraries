@@ -19,13 +19,13 @@ function mainMenu() {
     rl.question("Please choose an option: ", function (answer) {
         switch (answer) {
             case '1':
-                customer.customerMenu(rl, mainMenu); // Assuming you modify customerMenu similarly
+                customer.customerMenu(rl, mainMenu); 
                 break;
             case '2':
-                media.mediaMenu(rl, mainMenu); // Pass mainMenu here
+                media.mediaMenu(rl, mainMenu); 
                 break;
             case '3':
-                reservation.reservationMenu(rl, mainMenu); // Assuming a similar modification
+                reservation.reservationMenu(rl, mainMenu); 
                 break;
             case '4':
                 console.log("Thank you for using the system. Goodbye!");
